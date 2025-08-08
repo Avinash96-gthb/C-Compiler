@@ -15,7 +15,8 @@ typedef enum {
     TOKEN_RIGHT_BRACKETS,
     TOKEN_RETURN,
     TOKEN_END_OF_FILE,
-    TOKEN_DIGIT
+    TOKEN_DIGIT,
+    TOKEN_FLOAT
 } TokenType;
 
 typedef struct Token {
@@ -136,6 +137,10 @@ Token tokenise(){
             else if (strcmp(text,"return")==0){
                 free(text);
                 return make_token(TOKEN_RETURN, &source[start], length);
+            }
+            else if (strcmp(text,"float")==0){
+                free(text);
+                return make_token(TOKEN_FLOAT, &source[start], length);
             }
             else {
                 free(text);
